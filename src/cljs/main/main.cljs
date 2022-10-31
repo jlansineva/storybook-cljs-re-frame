@@ -45,8 +45,7 @@
 (re-frame/reg-sub ::get-jojo get-jojo-sub)
 
 (defn entrypoint
-  []
-  
+  []  
   (println "initializing")
   (re-frame/dispatch-sync [::initialize])
   (rdom/render [main-component]
