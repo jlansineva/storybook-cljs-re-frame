@@ -1,0 +1,22 @@
+(ns main.stories.utils
+  #_(:require ["@storybook/addon-docs" :refer [Title]]))
+
+(defmacro ->storybook
+  [name params & body]
+  (let [doc-symbol (symbol (str name "-docs"))
+        component-symbol (vary-meta (symbol name) assoc :export true)
+        {:keys [title args argTypes component]} params
+        arguments (gensym)]
+    `(do
+       (defn ~doc-symbol []
+         [:<>
+          [:> :a]])
+       (def ~(vary-meta 'default assoc :export true)
+         (cljs.core/clj->js {:title ~title
+                   :args ~args
+                   :argTypes ~argTypes
+                   :component ~component}))
+       (defn ~component-symbol
+         [~arguments]
+         (reagent.core/as-element
+           [~component ~arguments])))))

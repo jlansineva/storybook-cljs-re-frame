@@ -1,0 +1,7 @@
+(ns main.jojo)
+
+(defn star-platinum
+  []
+  [:div
+   [:input {:type :button}]
+   "Click to ora!"])

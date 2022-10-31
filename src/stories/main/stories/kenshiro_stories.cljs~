@@ -1,0 +1,12 @@
+(ns main.stories.kenshiro-stories
+  (:require
+   [reagent.core :as r]
+   [main.kenshiro :as kenshiro]))
+
+(def ^:export default
+  {:title "Kenshiro"
+   :component kenshiro/kenshiro})
+
+(defn ^:export kenshiro-story
+  (r/as-element [kenshiro]))
+
